@@ -6,9 +6,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/categories")
- */
 class CategoryController
 {
     function getAllCategories() {
@@ -18,6 +15,7 @@ class CategoryController
             ["name" => "Categorie 3"],
         ];
         $jsonResponse = json_encode($categories);
+
         return new Response($jsonResponse);
     }
 
@@ -29,6 +27,11 @@ class CategoryController
 
         $jsonResponse = json_encode($category);
 
+        return new Response($jsonResponse);
+    }
+
+    function deleteCategory($id){
+        $jsonResponse = json_encode([]);
         return new Response($jsonResponse);
     }
 }
