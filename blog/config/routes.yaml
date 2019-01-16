@@ -1,0 +1,9 @@
+categories:
+    path: /categories
+    methods: [GET]
+    controller: App\Controller\CategoryController::getAllCategories
+
+category:
+  path: /categories/{id}
+  methods: [GET]
+  controller: App\Controller\CategoryController::getCategory
