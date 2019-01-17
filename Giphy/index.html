@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Giphy</title>
+</head>
+<body>
+
+<h1>Giphy</h1>
+
+
+<form action="#" id="giphy_form">
+    <input type="text" id="giphy_query" placeholder="chaton"/>
+    <input type="submit" id="giphy_send" value="Ok">
+</form>
+
+<div id="result">
+
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$("#giphy_form").submit(function(){
+    var searchTerm = $("#giphy_query").val();
+    callApiGiphy(searchTerm);
+});
+
+
+    function callApiGiphy(searchTerm){
+        var apiKey = 'waCGxoFO7LVnzte4TCM8itpmIk7Pt53P';
+        $.ajax({
+            url: 'https://api.giphy.com/v1/gifs/translate?api_key='+apiKey+'&s='+searchTerm,
+            method: 'GET',
+        }).done(function(data){
+            if (data.data.length == 0) {
+                $('#result').html('Aucun résultat');
+            } else {
+                $('#result').html('<img src="'+data.data.images.downsized.url+'" width="'+data.data.images.downsized.width+'"/>');
+            }
+        }).fail(function(){
+            alert('Erreur API');
+        });
+    }
+</script>
+</body>
+</html>
