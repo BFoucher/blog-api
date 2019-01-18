@@ -23,8 +23,14 @@
 
 | URI        | Method           | Params  | Response |
 | ---------- |:-------------:| -----:| --- |
-| /categories   | GET |  | 200: ``` [ { "id": 42, "name": "Nom"}, {..} ] ``` |
+| /categories   | GET | *required* get ``` token=IsJohn ``` | 200: ``` [ { "id": 42, "name": "Nom"}, {..} ] ``` <br> 401: ``` {"error": "Unauthorized"} ```  |
 | /categories   | POST      |   *required* body ``` {"name": "Titre"} ``` | 201: ``` { "id": 42, "name": "Nom"}``` |
 | /categories/{id}   | GET      |     | 200: ``` { "id": 42, "name": "Nom"}``` |
 | /categories/{id}   | DELETE      |     | 200 ``` {} ``` |
 | /categories/{id}   | PUT      |  *required* body ``` {"name": "Titre"} ```   | 200: ``` { "id": 42, "name": "Nom"}``` |
+ 
+## Login
+
+| URI        | Method           | Params  | Response |
+| ---------- |:-------------:| -----:| --- |
+| /login   | POST | *required* bdy ``` {"username": "John", "password": "123"} ``` | 200: ``` { "token": "IsJohn"} ``` <br> 400: ``` { "error": "Bad Credentials"} ``` |

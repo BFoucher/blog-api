@@ -9,6 +9,13 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController
 {
     function getAllCategories() {
+        if (false === isset($_GET['token']) || $_GET['token'] !== 'IsJohn') {
+            $response = ["error" => "Unauthorized"];
+            $responseJson = json_encode($response);
+
+            return new Response($responseJson, 401);
+        }
+
         $categories= [
             ["name" => "Categorie 1"],
             ["name" => "Categorie 2"],
